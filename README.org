@@ -1,0 +1,6 @@
+* Collection of little `Scheme` programs
+
+A small library of little programs written in `Scheme`.
+
+For (self-) learning purposes...
+
