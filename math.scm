@@ -14,4 +14,6 @@
 
 (define (factorial n)                                                                
   "Computes the factorial n! of n"
-	(* n (apply * (cdr (iota n)))))	
+  (if (zero? n)
+      1
+      (* n (apply * (cdr (iota n))))))	
