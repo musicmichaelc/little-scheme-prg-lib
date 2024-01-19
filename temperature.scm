@@ -1,3 +1,5 @@
+(load "math.scm")
+
 (define (f-to-c f)                                                                   
   "Converts Fahrenheit `f` to Celsius. Returns number as a fraction if possible (unless it is an integer)."
   (* (- f 32) 5/9))
