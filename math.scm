@@ -11,3 +11,7 @@
           (number->string (car cfr)) 
           " " 
           (number->string (cdr cfr))))))
+
+(define (factorial n)                                                                
+  "Computes the factorial n! of n"
+	(* n (apply * (cdr (iota n)))))	
