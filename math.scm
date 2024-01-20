@@ -17,7 +17,7 @@
   (if (zero? n)
       1
       (* n (apply * (cdr (iota n))))))	
-(define (n! n)
+(define (factorial-2 n)
   "Computes the factorial of n (using tail recursive function)"
   (if (zero? n)
       1
