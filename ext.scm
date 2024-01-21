@@ -1,9 +1,9 @@
 ;;; `atom?` definition is taken
 ;;; from "The Little Schemer" 
-
 (define atom?
   (lambda (x)
-    (and (not (pair? x)) (not (null? x))))) 
+    (and (not (pair? x)) (not (null? x)))))
+;;;
 
 (define (add1 x)
   (+ x 1))
@@ -18,3 +18,13 @@
         ((and (atom? (car l)) (list? (cdr l)))
          (lat? (cdr l)))
         (else #f)))
+
+;;; c.f. `lat?` as defined in "The Little Schemer":
+(define lat-ls?
+  (lambda (l)
+    (cond
+      ((null? l) #t)
+      ((atom? (car l)) (lat? (cdr l)))
+      (else #f))))
+;;;
+
