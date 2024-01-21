@@ -10,3 +10,11 @@
 
 (define (sub1 x)
   (- x 1))
+
+(define (lat? l)
+  "Returns whether `l` is a list comprised of atoms"
+  (cond ((null? l)
+         #t)
+        ((and (atom? (car l)) (list? (cdr l)))
+         (lat? (cdr l)))
+        (else #f)))
