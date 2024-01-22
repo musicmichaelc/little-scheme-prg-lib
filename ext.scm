@@ -27,4 +27,11 @@
       ((atom? (car l)) (lat? (cdr l)))
       (else #f))))
 ;;;
-
+;;;
+;;; `member?` definition from "The Little Schemer":
+(define member?
+  (lambda (a lat)
+    (cond
+      ((null? lat) #f)
+      (else (or (eq? (car lat) a)
+              (member? a (cdr lat)))))))
