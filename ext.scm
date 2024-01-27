@@ -70,3 +70,12 @@
     ((eq? old (car lat))
      (cons new lat))
     (else (cons (car lat) (insertL new old (cdr lat))))))
+
+(define (subst new old lat)
+  "Returns a new `lat` (list of atoms) in which the first occurrence of `old` in `lat` is replaced by `new`." 
+  (cond
+    ((null? lat)
+     (quote ()))
+    ((eq? old (car lat))
+     (cons new (cdr lat)))
+    (else (cons (car lat) (subst new old (cdr lat))))))
