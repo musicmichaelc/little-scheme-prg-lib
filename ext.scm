@@ -56,7 +56,8 @@
 (define (insertR new old lat)
   "Returns a new `lat` (list of atoms) in which `new` is inserted after the first occurrence of `old` in `lat` (a list of atoms)." 
   (cond
-    ((null? lat) (quote ()))
+    ((null? lat)
+     (quote ()))
     ((eq? old (car lat))
      (cons (car lat) (cons new (cdr lat))))
     (else (cons (car lat) (insertR new old (cdr lat))))))
