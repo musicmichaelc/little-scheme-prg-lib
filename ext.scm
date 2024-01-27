@@ -38,6 +38,7 @@
 ;;;
 ;;;
 ;;; `rember` from "The Little Schemer":
+;;; (Removes the first occurrence of `a` in `lat`):
 (define rember
   (lambda (a lat)
     (cond
@@ -46,8 +47,18 @@
       (else (cons (car lat)
               (rember a (cdr lat)))))))
 
+(define (multirember a lat)
+  "Removes all occurrences of `a` in `lat`"
+  (cond
+    ((null? lat)
+     (quote ()))
+    ((eq? (car lat) a)
+     (multirember a (cdr lat)))
+    (else (cons (car lat)
+                (multirember a (cdr lat))))))
 
 (define (firsts l)
+  "Returns a list comprised of the first element of each list inside the list `l`"
   (cond
     ((null? l) (quote ()))
     (else (cons (car (car l)) 
@@ -79,3 +90,12 @@
     ((eq? old (car lat))
      (cons new (cdr lat)))
     (else (cons (car lat) (subst new old (cdr lat))))))
+
+(define (subst2 new o1 o2 lat)
+  "Returns a new `lat` (list of atoms) in which either the first occurrence of `o1` or of `o2` -- whichever one occurs first -- in `lat` is replaced by `new`." 
+  (cond
+    ((null? lat)
+     (quote ()))
+    ((or (eq? o1 (car lat)) (eq? o2 (car lat)))
+     (cons new (cdr lat)))
+    (else (cons (car lat) (subst2 new o1 o2 (cdr lat))))))
