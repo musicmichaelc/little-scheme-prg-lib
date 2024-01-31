@@ -99,3 +99,21 @@
     ((or (eq? o1 (car lat)) (eq? o2 (car lat)))
      (cons new (cdr lat)))
     (else (cons (car lat) (subst2 new o1 o2 (cdr lat))))))
+
+(define (multiinsertR new old lat)
+  "Returns a new list of atoms in which `new` is inserted to the right of each occurrence of `old` in `lat` (a list of atoms)." 
+  (cond
+    ((null? lat)
+     (quote ()))
+    ((eq? old (car lat))
+     (cons (car lat) (cons new (multiinsertR new old (cdr lat)))))
+    (else (cons (car lat) (multiinsertR new old (cdr lat))))))
+
+(define (multiinsertL new old lat)
+  "Returns a new `lat` (list of atoms) in which `new` is inserted to the left of the first occurrence of `old` in `lat` (a list of atoms)." 
+  (cond
+    ((null? lat)
+     (quote ()))
+    ((eq? old (car lat))
+     (cons new (cons old (multiinsertL new old (cdr lat)))))
+    (else (cons (car lat) (multiinsertL new old (cdr lat))))))
